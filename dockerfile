@@ -1,6 +1,20 @@
 # Use an official Python runtime as a parent image
 FROM python:3.9-slim
 
+# Install dependencies for building Python packages
+RUN apt-get update && apt-get install -y \
+    git \
+    wget \
+    cmake \
+    build-essential
+
+# Install Git LFS
+RUN wget https://packagecloud.io/github/git-lfs/gpgkey -O - | apt-key add - \
+    && echo "deb https://packagecloud.io/github/git-lfs/debian/ buster main" | tee /etc/apt/sources.list.d/git-lfs.list \
+    && apt-get update \
+    && apt-get install -y git-lfs \
+    && git lfs install
+
 # Set the working directory in the container
 WORKDIR /app
 
@@ -16,7 +30,7 @@ COPY . /app
 # Make port 8000 available to the world outside this container
 EXPOSE 8000
 
-# Define environment variable
+# Define environment variables
 ENV UVICORN_HOST=0.0.0.0
 ENV UVICORN_PORT=8000
 
