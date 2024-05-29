@@ -12,7 +12,7 @@ services:
     container_name: fastapi_container
     restart: always
     volumes:
-      - .:/app
+      - ./src:/app:ro
     ports:
       - "8000:8000"
     networks:

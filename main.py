@@ -3,6 +3,7 @@ from pypdf import PdfReader
 from fastapi import FastAPI, WebSocket, UploadFile, File, HTTPException
 from fastapi.responses import FileResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
+from fastapi.middleware.cors import CORSMiddleware
 from pathlib import Path
 from src.dto.query_dto import SimilarQueriesDto
 from src.utils.config import DOCUMENTS_PATH, stop_words
@@ -27,6 +28,21 @@ embedding_model = SentenceTransformer('paraphrase-multilingual-MiniLM-L12-v2')
 llm = get_llm_model()
 
 app = FastAPI()
+
+# Define your CORS origins
+origins = [
+    "http://localhost",
+    "http://localhost:8000",
+    # Add other origins as needed
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],  # Allow all methods including OPTIONS
+    allow_headers=["*"],  # Allow all headers
+)
 
 # Mount static files
 app.mount("/static", StaticFiles(directory="static"), name="static")
