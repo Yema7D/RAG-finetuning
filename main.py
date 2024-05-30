@@ -120,7 +120,7 @@ async def websocket_endpoint(websocket: WebSocket):
             stream=True,
             max_tokens=4096,
             stop=stop_words,
-            temperature=0.0,
+            temperature=0.7,
         )
         result = ""
         for output in stream:
