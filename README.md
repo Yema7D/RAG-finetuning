@@ -46,23 +46,4 @@ pip install -r requirements.txt
 docker-compose up
 ```
 
-### Example Usage:
-```python
-from rag_generator import generate_mini_scenarios_from_content, generate_answer_scenario_from_content
 
-# Define the context for mini-scenario generation
-context = """
-    Insert your didactic mechanics and context here.
-"""
-
-# Generate mini-scenarios
-mini_scenarios = generate_mini_scenarios_from_content(context, nbr_scenarios=10, language="English")
-
-# Display the generated mini-scenarios
-for scenario in mini_scenarios:
-    print(scenario)
-
-# Provide answers to generated mini-scenarios
-for scenario in mini_scenarios:
-    answer = generate_answer_scenario_from_content(context, scenario, language="English")
-    print("Answer:", answer)
