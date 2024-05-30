@@ -12,7 +12,7 @@ Context:
 
 User : Based on the above context, please generate a list of exactly {nbr_questions} distinct and contextually relevant questions. Ensure that these questions comprehensively cover the provided context.
 Don't never never ask general or vague questions.
-Always add "What", "Who", "When", "Where","How" when possible.
+Always add "What", "Who", "When", "Where","How","Generate" when possible.
 Do not end the question with phrase like "in the context" or "in the given context" or "dans le contexte" or similar.
 Give a list of exactly {nbr_questions} questions.
 Give me the questions in {language} language.
