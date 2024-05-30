@@ -40,6 +40,11 @@ source .env/bin/activate
 ```
 pip install -r requirements.txt
 ```
+* Run the application
+
+```bash
+uvicorn main:app
+```
 
 * install images and run containers on docker 
 ```
